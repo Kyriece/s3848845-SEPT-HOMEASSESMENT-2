@@ -8,6 +8,6 @@ jobs:
   build:
     docker:
       # replace with your preferred image
-      - image: cimg/:node-hello
+      - image: cimg/s3848845:node-hello
     steps:
       - run: npm start
