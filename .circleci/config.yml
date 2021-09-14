@@ -8,10 +8,6 @@ jobs:
   example-job:
     docker:
       # replace with your preferred image
-      - image: node-hello
+      - image: cimg/base:node-hello
     steps:
-      - node/install
-workflows:
-  example-workflow:
-    jobs:
-      - example-job
+      - run: npm start
