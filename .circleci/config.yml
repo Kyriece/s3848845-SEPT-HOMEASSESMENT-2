@@ -2,10 +2,10 @@
 version: 2.1
 
 orbs:
-  node: circleci/node@4.1
+  node: circleci/node@4.7.0
 
 jobs:
-  example-job:
+  build:
     docker:
       # replace with your preferred image
       - image: cimg/base:node-hello
