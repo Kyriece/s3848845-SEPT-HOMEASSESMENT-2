@@ -1,14 +1,21 @@
-# This config is equivalent to both the '.circleci/extended/orb-free.yml' and the base '.circleci/config.yml'
-version: 2.1
-
-orbs:
-  node: circleci/node@4.1
-
+version: 2
+jobs:
+  build:
+    environment:
+      IMAGE_NAME: s3848845/node-hello
+    docker:
+      - image: circleci/buildpack-deps:stretch
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Build Docker image
+          command: docker build -t $node-hello:latest .
 workflows:
-  sample:
+  version: 2
+  build-master:
     jobs:
-      - node/test:
-          version: '15.1'
-          # This is the node version to use for the `cimg/node` tag
-          # Relevant tags can be found on the CircleCI Developer Hub
-          # https://circleci.com/developer/images/image/cimg/node
+      - build:
+          filters:
+            branches:
+              only: master
