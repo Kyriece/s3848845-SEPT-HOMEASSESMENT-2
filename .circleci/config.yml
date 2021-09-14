@@ -4,7 +4,14 @@ version: 2.1
 orbs:
   node: circleci/node@4.1
 
+jobs:
+  example-job:
+    docker:
+      # replace with your preferred image
+      - image: node-hello
+    steps:
+      - node/install
 workflows:
-    example-workflow:
-      jobs:
-        - node/run
+  example-workflow:
+    jobs:
+      - example-job
